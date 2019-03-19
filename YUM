@@ -1,0 +1,6 @@
+$ yum list all
+     Lists all installed and available packages. 
+$ yum list installed
+     Lists all packages installed on your system.
+$ yum search openjdk*
+     To search packages.
