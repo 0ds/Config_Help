@@ -7,3 +7,5 @@ To Configure on Linux
     $  git config --global merge.tool diffmerge
     $  git config --global mergetool.diffmerge.trustExitCode true
     $  git config --global mergetool.diffmerge.cmd "/usr/bin/diffmerge --merge --result=\"\$MERGED\" \"\$LOCAL\" \"\$BASE\" \"\$REMOTE\""
+To check wheater the tool is configured or not
+    $  git config --global --list
