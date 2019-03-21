@@ -1,0 +1,6 @@
+To install any rpm with no dependency
+  $ sudo rpm --install diffmerge-4.2.0.*.rpm
+To install any rpm with dependencies  <------------ Use YUM
+  $ sudo yum install diffmerge-4.2.0.*.rpm
+To delete rpm package
+  $ sudo rpm --erase diffmerge
