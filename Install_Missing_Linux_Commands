@@ -1,4 +1,5 @@
 Services
   # yum install -y initscripts
 Locate
-  # yum inatall -y mlocate
+  # yum inatall -y mlocate      ---------> # updatedb
+                
