@@ -1,2 +1,4 @@
 Services
-  # yum install initscripts
+  # yum install -y initscripts
+Locate
+  # yum inatall -y mlocate
