@@ -1,0 +1,8 @@
+First UPdate
+   # yum -y update
+
+Centos
+  # yum -y install openssh-server openssh-clients
+Service
+  # systemctl start sshd.service        ------------------------>CentOS
+  # service sshd start                  ------------------------->Debian
