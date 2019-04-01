@@ -1,0 +1,25 @@
+/string =searching the pattern
+:%s/old/new/g to substitute 'new' for 'old' where g is globally
+:! to run the shell commands like :!dir, :!ls
+dd to delete the line
+x - to delete the unwanted character
+u - to undo the last the command and 
+0 (zero) to move to the start of the line.
+:wq - to save and exit  ------------------OR---------------  :x!
+:q! - to trash all changes
+dw - move the cursor to the beginning of the word to delete that word
+d2w - which deletes 2 words --------> d3w....
+v - starts visual mode 
+gg - to move you to the start of the file.
+shift+g OR :$ ------> end of the file
+0 (zero) to move to the start of the line.
+shift+$ -----------> end of the line
+ctrl+f ----------> move the cursor at the top and push the content at top SIMILAR to like clear command in linux
+
+
+
+#######################Visual Mode######################
+y - copy
+x -cut
+p - paste after
+P - paste before
