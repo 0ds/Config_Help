@@ -13,6 +13,7 @@ v - starts visual mode
 gg - to move you to the start of the file.
 shift+g OR :$ ------> end of the file
 0 (zero) to move to the start of the line.
+sift+6 to move to the beging of the line if the line starts from a tab or space
 shift+$ -----------> end of the line
 ctrl+f ----------> move the cursor at the top and push the content at top SIMILAR to like clear command in linux
 
