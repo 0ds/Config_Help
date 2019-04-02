@@ -122,7 +122,9 @@ CHMOD recursive changing of permissions
 ------------------------------------------------------------------------------------
 find & locate
 
-locate ---> has only one big advantage over find is speed.
+*locate ---> has only one big advantage over find is speed.
+*find runs in real time, so its output is always up to date.
+       Because locate(1) relies on a database updated hours or days in the past, its output can be outdated.
 find
        # find /home -name tecmint.txt   ----->Output:- techmint.txt
        # find /home -iname tecmint.txt   ----->Output:- technimt.txt
@@ -143,7 +145,7 @@ find
               ./index.php
 
 * Find SUID Files whose permission to 777                     -----------> SUID
-       # find / -perm 3777
+       # find / -perm 4777
 * Find all the SGID bit files whose permissions set to 644.   -----------> SGID
        # find / -perm 2644
 * Find Sticky Bit Files with 551 Permissions                  ------------> Sticky Bit
@@ -189,3 +191,25 @@ find
 *Find Specific Files and Delete
        # find / -type f -name *.mp3 -size +10M -exec rm {} \;
 -------------------------------------------------------------------------------------------------
+STICKEY BIT, SUID , SGID
+1. SUID permission  ----------> 4
+2. SGID permission  ----------> 2
+3. Sticky bit       ----------> 1
+Set-user Identification (SUID)
+  When a command or script with SUID bit set is run, its effective UID becomes that of the owner of the file, rather than of the user who is running it.
+         # chmod 4555 [path_to_file]
+Set-group identification (SGID)
+  SGID permission is similar to the SUID permission, only difference is – when the script or command with SGID on is run, it runs as if it were a member of the same group in which the file is a member
+  When SGID permission is set on a directory, files created in the directory belong to the group of which the directory is a member.
+       # chmod 2555 [path_to_file]
+Sticky Bit
+ The sticky bit is primarily used on shared directories.
+ It is useful for shared directories such as /var/tmp and /tmp because users can create files, read and execute files owned by other users, but are not allowed to remove files owned by other users.
+ For example if user bob creates a file named /tmp/bob, other user tom can not delete this file even when the /tmp directory has permission of 777. If sticky bit is not set then tom can delete /tmp/bob, as the /tmp/bob file inherits the parent directory permissions.
+ root user (Off course!) and owner of the files can remove their own files.
+       - T refers to when the execute permissions are off.
+       - t refers to when the execute permissions are on.
+       # chmod +t [path_to_directory]
+       or 
+       # chmod 1777 [path_to_directory]
+----------------------------------------------------------------------------------------------------       
