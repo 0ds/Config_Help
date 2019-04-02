@@ -1,0 +1,13 @@
+USERADD, USERMOD, USERDEL PASSWD,CHAGE:-
+    useradd command is used to create new accounts in Linux
+    usermod command used to modify the existing accounts in linux
+    userdel command is used to delete local account in linux
+    passwd command used assign password to local accounts or users.
+    chage comamnd is used to view & modify users password expiry information
+>>>>>>>>>>>>>>>>>>>>>> https://www.linuxtechi.com/linux-commands-to-manage-local-accounts   <<<<<<<<<<<<<<<<<<<<<<<
+
+Let’s create a username ‘harry’ and assign password.
+    [root@linuxtechi ~]# useradd harry ; echo -e "Roxicant@123#\nRoxicant@123#" | passwd harry
+    Changing password for user harry.
+    New password: Retype new password: passwd: all authentication tokens updated successfully.
+    [root@linuxtechi ~]#
