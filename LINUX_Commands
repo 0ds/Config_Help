@@ -22,7 +22,7 @@ $$$$ EXAMPLE's $$$$
     $ export JAVA_HOME=/usr/local/jdk
 *To export shell function:
     $ name () { echo "tutorialspoint"; }
-    $ export -f printname
+    $ export -f name
         output:
           $ name
           tutorialspoint
