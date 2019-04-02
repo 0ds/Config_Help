@@ -1,0 +1,29 @@
+# which ------> shows the full path of (shell) commands
+       which [options] [--] programname [...]
+                -a >>> print all matching pathnames of each argument
+                
+# alias clear='tput clear'
+      # alias  -----> to list all alias in albhabetical order 
+      # umalias <command_name> ------->to remove any alias
+
+EXPORT - Set export attribute for shell variables.
+# export    
+         -p ---> List of all names that are exported in the current shell
+         -n ---> Remove names from export list
+         -f ---> Names are exported as functions
+   export [-fn] [name[=value] ...] or export -p
+$$$$ EXAMPLE's $$$$
+*To set vim as a text editor        ----------------------->To remove names from exported list, use -n option
+                                                            $ export -n EDITOR
+    $ export EDITOR=/usr/bin/vim    ----------------------> To Check $ export | grep EDITOR
+*To set colorful prompt
+    $ export PS1='\[\e[1;32m\][\u@\h \W]\$\[\e[0m\] '
+*To Set JAVA_HOME:
+    $ export JAVA_HOME=/usr/local/jdk
+*To export shell function:
+    $ name () { echo "tutorialspoint"; }
+    $ export -f printname
+        output:
+          $ name
+          tutorialspoint
+    
