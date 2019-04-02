@@ -1,10 +1,35 @@
+exec, source &  ./script
+------------------------------------------------------------------
+./script -----> creates a new shell and executes each command in the script within the new shell. When the end of the script file is encountered, the new shell exits
+sourse -------> source execute a shell script within the context of the current shell. Since execution takes place within the context of the current shell, any changes in the shell are retained following the completion of the shell. 
+       # source ./.barshrc
+ecec ---------> The exec command will execute a command in place of the current shell, that is, it terminates the current shell and starts a new process in its place.
+                exec was often used to execute the last command of a shell script. This would kill the shell slightly earlier; otherwise, the shell would wait until the last command was finished. This practice saves a process and some memory.
+                try exec ls. you will be logged out from your login shell.
+
+            -->      exec also manipulates file descriptors in the Bourne shell.
+                     $exec >>logoutput
+            -->      after issuing this command you will not see output of any command in your console. all output goes into logoutput file.
+                     use exec >/dev/console to return.
+            -->      $exec 2>errs.out
+                     means that from then on, stderr goes into errs.out file
+
+
+------------------------------------------------------------------------
 # which ------> shows the full path of (shell) commands
        which [options] [--] programname [...]
                 -a >>> print all matching pathnames of each argument
-                
+---------------------------------------------------------------------------                
+ALIAS temporay & permanent
+Temporary ---> get removed after restart
 # alias clear='tput clear'
       # alias  -----> to list all alias in albhabetical order 
       # umalias <command_name> ------->to remove any alias
+Permanent -----> but after edit restart the system
+*****************The /etc/skel/.bashrc file is copied into the home *****************
+#vim $HOME/.bashrc --------> at the end of the file list your alias  ----------> but this alias is local to the user
+#vim /etc/skel/.bashrc --------> at the end of the file list your alias  ----------> but this alias will get coped to every user which is created
+-------------------------------------------------------------------------------
 
 EXPORT - Set export attribute for shell variables.
 # export    
@@ -26,4 +51,26 @@ $$$$ EXAMPLE's $$$$
         output:
           $ name
           tutorialspoint
-    
+--------------------------------------------------------------------------------------          
+          
+TAIL & HEAD
+# tail -n 5 log_file.txt
+# head -n 4 log_file.txt
+--------------------------------------------------------------------------------------
+MORE & LESS
+#export -p | more
+#export -p | less
+--------------------------------------------------------------------------------------
+
+KILL & KILLALL
+1 HUP --> hang up
+3 QUIT --> stoprunning
+9 KILL --> unconditionally terminate
+17 STOP --> stop unconditionally but doesent terminate
+18 TSTP --> stop or pauses, but continue to run in background
+19 COUNT --> resume execution after STOP or TSTP
+       
+       -s -------------------> this parameter allow you to specify other signal
+# kill -9 <process_id>  ------> to kill only process
+# killall -9 httpd*     ------> to kill entire process tree
+----------------------------------------------------------------------------------------    
