@@ -171,56 +171,21 @@ find
 *Find Last 50 Days Modified Files
        # find / -mtime 50
 *Find Last 50 Days Accessed Files
-
-To find all the files which are accessed 50 days back.
-
-# find / -atime 50
-
-28. Find Last 50-100 Days Modified Files
-
-To find all the files which are modified more than 50 days back and less than 100 days.
-
-# find / -mtime +50 –mtime -100
-
-29. Find Changed Files in Last 1 Hour
-
-To find all the files which are changed in last 1 hour.
-
-# find / -cmin -60
-
-30. Find Modified Files in Last 1 Hour
-
-To find all the files which are modified in last 1 hour.
-
-# find / -mmin -60
-
-31. Find Accessed Files in Last 1 Hour
-
-To find all the files which are accessed in last 1 hour.
-
-# find / -amin -60
-
-Part V – Find Files and Directories Based on Size
-32. Find 50MB Files
-
-To find all 50MB files, use.
-
-# find / -size 50M
-
-33. Find Size between 50MB – 100MB
-
-To find all the files which are greater than 50MB and less than 100MB.
-
-# find / -size +50M -size -100M
-
-34. Find and Delete 100MB Files
-
-To find all 100MB files and delete them using one single command.
-
-# find / -size +100M -exec rm -rf {} \;
-
-35. Find Specific Files and Delete
-
-Find all .mp3 files with more than 10MB and delete them using one single command.
-
-# find / -type f -name *.mp3 -size +10M -exec rm {} \;
+       # find / -atime 50
+*Find Last 50-100 Days Modified Files
+       # find / -mtime +50 –mtime -100
+*Find Changed Files in Last 1 Hour
+       # find / -cmin -60
+*Find Modified Files in Last 1 Hour
+       # find / -mmin -60
+*Find Accessed Files in Last 1 Hour
+       # find / -amin -60
+*Find 50MB Files
+       # find / -size 50M
+*Find Size between 50MB – 100MB
+       # find / -size +50M -size -100M
+*Find and Delete 100MB Files
+       # find / -size +100M -exec rm -rf {} \;
+*Find Specific Files and Delete
+       # find / -type f -name *.mp3 -size +10M -exec rm {} \;
+-------------------------------------------------------------------------------------------------
