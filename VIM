@@ -16,6 +16,7 @@ shift+g OR :$ ------> end of the file
 sift+6 to move to the beging of the line if the line starts from a tab or space
 shift+$ -----------> end of the line
 ctrl+f ----------> move the cursor at the top and push the content at top SIMILAR to like clear command in linux
+shift+3 ----> Highlight all occurrence of a selected word
 
 
 
