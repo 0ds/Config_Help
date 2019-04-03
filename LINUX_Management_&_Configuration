@@ -11,3 +11,35 @@ Let’s create a username ‘harry’ and assign password.
     Changing password for user harry.
     New password: Retype new password: passwd: all authentication tokens updated successfully.
     [root@linuxtechi ~]#
+
+------------------------------------------------------------------------------------------------
+Redirection:-                                   +                           FileDescripter
+ File 	                File Descriptor
+Standard Input STDIN 	0
+Standard Output STDOUT 	1
+Standard Error STDERR 	2
+
+Examples:-
+1.    $ myprogram 2>errorsfile  ---------> error output
+2.    # find . -name 'my*' 2>error.log  ----------------> This cmd looks for all files starting with "my" and if it has denied permissions to access the errot log will get redirected to this log file.
+3.  Server Administrators frequently, list directories and store both error and standard output into a file, which can be processed later. Here is the command.
+      # ls Documents ABC> dirlist 2>&1
+      
+ Summary
+
+1    Each file in Linux has a corresponding File Descriptor associated with it
+2   The keyboard is the standard input device while your screen is the standard output device
+3    ">" is the output redirection operator. ">>" appends output to an existing file
+4    "<" is the input redirection operator
+5    ">&"re-directs output of one file to another.
+6    You can re-direct error using its corresponding File Descriptor 2.
+
+++++++FileDescripter++++++++
+In simple words, when you open a file,the operating system creates an entry to represent that file and store the information 
+about that opened file. So if there are 100 files opened in your OS then there will be 100 entries in OS (somewhere in kernel). 
+These entries are represented by integers like (...100, 101, 102....). 
+This entry number is the file descriptor. So it is just an integer number that uniquely represents an opened file in operating 
+system. If your process opens 10 files then your Process table will have 10 entries for file descriptors.
+
+3>&1 1>&2 2>&3
+1. Redirect 
