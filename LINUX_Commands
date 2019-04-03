@@ -213,3 +213,8 @@ Sticky Bit
        or 
        # chmod 1777 [path_to_directory]
 ----------------------------------------------------------------------------------------------------       
+TAR
+1. Type tar -xvf yourfile.tar to extract the file to the current directory.
+2. Or tar -C /myfolder -xvf yourfile.tar to extract to another directory.
+----------------------------------------------------------------------------------------------------
+
