@@ -45,3 +45,34 @@ system. If your process opens 10 files then your Process table will have 10 entr
 The 3>&1 in your command line will create a new file descriptor and redirect it to 1 which is STDOUT. 
 Now 1>&2 will redirect the file descriptor 1 to STDERR and 2>&3 will redirect file descriptor 2 to 3 which is STDOUT
 ------------------------------------------------------------------------------------------------------------------------------
+
+CRON JOBs
+
+# rpm -qa | grep cron  ---------------> -q = querry ; -a = all installed packages
+# systemctl status crond.service    ---> to check service status
+
+# crontab -l -----> to list all cron jobs
+# cat /etc/crontab    or   crontab -e    ------> to edit crontab or shedule a job
+
+# crontab -e -u <username>  ----> to edit other user crontab
+# crontab -l -u <username> ------> to list other user crontab
+# crontab -r -u <username> ------> to delete/remove otheruser crontab job
+
+To ALLOW or DENY users to create jobs
+# vim /etc cron.allow ----------------> allow user list
+# vim /etc cron.deny ----------------> deny user list
+# find /etc/ -name "cron.*" -print
+    cron.d/       cron.daily/   cron.hourly/  cron.monthly/ cron.weekly/  
+      |
+      .----> cron.hourly
+    juss make entries into this file and it will be executed hourly , weekly, monthly ,... etc
+    
+Example:-
+1. on 33 min 9th hr.... if the day is SUNDAY(0) then only this scrit will be executed
+        33 9 8-14 mar * [`date +\%u = 0] && sh /scripts/testing.sh  
+2. */5 * * * * -----> every 5 minutes
+3. to monitor cronjob status
+        */5 * * * * sh /scripts/testing.sh 2>&1 /test/cron.log echo "Exit Code" $? >> test log.log        
+
+-----------------------------------------------------------------------------------------------------------------------------
+
