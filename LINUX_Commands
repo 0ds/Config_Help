@@ -3,7 +3,7 @@ exec, source &  ./script
 ./script -----> creates a new shell and executes each command in the script within the new shell. When the end of the script file is encountered, the new shell exits
 sourse -------> source execute a shell script within the context of the current shell. Since execution takes place within the context of the current shell, any changes in the shell are retained following the completion of the shell. 
        # source ./.barshrc
-ecec ---------> The exec command will execute a command in place of the current shell, that is, it terminates the current shell and starts a new process in its place.
+exec ---------> The exec command will execute a command in place of the current shell, that is, it terminates the current shell and starts a new process in its place.
                 exec was often used to execute the last command of a shell script. This would kill the shell slightly earlier; otherwise, the shell would wait until the last command was finished. This practice saves a process and some memory.
                 try exec ls. you will be logged out from your login shell.
 
