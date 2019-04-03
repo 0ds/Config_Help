@@ -1,3 +1,17 @@
+Return Code:-
+What exit code should I use?
+
+The Linux Documentation Project has a list of reserved codes that also offers advice on what code to use for specific scenarios. These are the standard error codes in Linux or UNIX.
+    0   - Successfull
+    1   - Catchall for general errors
+    2   - Misuse of shell builtins (according to Bash documentation)
+    126 - Command invoked cannot execute
+    127 - “command not found”
+    128 - Invalid argument to exit
+    128+n - Fatal error signal “n”
+    130 - Script terminated by Control-C
+    255\* - Exit status out of range
+-------------------------------------------------------------------------------------------------------------    
 $?       
 
 $? is used to find the return value of the last executed command. Try the following in the shell:
@@ -6,10 +20,11 @@ $? is used to find the return value of the last executed command. Try the follow
   
 Basically it returns error code as out put
 0 ->Successful 
-1 ->
-2 ->
+1 ,,,,..........................
 
 Shell Script:-
+1. to check wheather a script runs or not
+
  #!/bin/bash
 
 cat file.txt 
