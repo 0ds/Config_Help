@@ -1,0 +1,26 @@
+COPY
+0     Successful completion.
+1     Failure due to any of the following:
+        — an argument had a trailing slash (/) but was not a directory
+        — unable to find a file
+        — unable to open an input file for reading
+        — unable to create or open an output file
+        — a read error occurred on an input file
+        — a write error occurred on an output file
+        — the input and output files were the same file
+        — encountered a fatal error when using -r or -R
+        Possible fatal -r or -R errors include:
+        — inability to access a file
+        — inability to change permissions on a target file
+        — inability to read a directory
+        — inability to create a directory
+        — a target that is not a directory
+        — source and destination directories are the same
+2     Failure due to any of the following:
+        — an invalid command line option
+        — too few arguments on the command line
+        — a target that should be a directory but is not
+        — no space left on target device
+        — out of memory to hold the data to be copied
+        — inability to create a directory to hold a target file
+---------------------------------------------------------------------------------------------------------------
