@@ -1,0 +1,10 @@
+$?       
+
+$? is used to find the return value of the last executed command. Try the following in the shell:
+  $ ls somefile
+  $echo $?
+  
+Basically it returns error code as out put
+0 ->Successful 
+1 ->
+2 ->
