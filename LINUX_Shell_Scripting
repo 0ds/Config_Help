@@ -37,3 +37,10 @@ else
   echo "The script failed" >&2
   exit 1
 fi
+
+* If the cat command fails an OR operation can be used to provide a fallback - cat file.txt || exit 0 In this case 
+  an exit code of 0 is returned even if there is an error.
+  
+  #!/bin/bash
+  cat 'doesnotexist.txt' 2>/dev/null || exit 0
+  
