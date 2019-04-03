@@ -75,3 +75,43 @@ Example:-
        */5 * * * * sh /scripts/testing.sh 2>&1 /test/cron.log echo "Exit Code" $? >> test/log.log     
 
 -----------------------------------------------------------------------------------------------------------------------------
+PROCESS MANAGEMENT
+
+1. Which user is running which program/services
+    # ps -up <process_id>
+2. to check which port the service is bind to
+    $ sudo netstat -tulpn | grep httpd
+
+Reloading & Restarting the services:-
+    Reloading----> during it the process ID does not change
+    Restarting---> the process ID changes and the connection associated with this process ID
+
+Enabled & Disabled    
+1. To check Status
+    # systemctl is-active sshd
+2. To check if enabled
+    # system is-enabled ssh
+   a). To enable--------->  # systemctl enable sshd
+   b). To disable---------> # systemctl disable sshd
+3. to provide a list  of all the service which are active
+    # systemctl list-units --type=service
+4. to provide a list  of all the service which are active as well as incative
+    # systemctl list-units --type=service --all
+5. count 
+    # systemctl list-units --type=service | wc -l
+6. to list all services which are enabled or disabled
+    # systemctl list-unit-files --type=service
+7. list of all the services which are failed
+    # systemctl --failed --type=service
+
+MASKING a service:-
+ means if service is running no one can stop it and if the service is stopped no one can stopped it
+    # systemctl mask httpd----------------> MASK
+    # systemctl unmask httpd--------------> UNMASK
+    
+-------------------------------------------------------------------------------------------------------------
+
+
+   
+
+
