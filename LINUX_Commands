@@ -283,8 +283,12 @@ AWK:-
        5. print 2nd column when this record DOES NOT contain 'test'
               # awk '! /test/ { print $2 }' file.txt
 
-              
+---------------------------------------------------------------------------------------
+WC - Word Count
 
-
+# wc -l  --> number of lines
+     - w --> ||      || words
+     -c  --> ||      || charecters
+----------------------------------------------------------------------     
    
 
