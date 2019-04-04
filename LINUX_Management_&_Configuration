@@ -166,7 +166,52 @@ A description of each field follows:
     vsftpd : .example.com
 ----------------------------------------------------------------------------------------------------------
 
+Mounting, Permanet Mounting, /etc/fstab, fdisk:-
 
+0. To list all mounts                         OR                  
+    # mount                                                    # df -h
+0.0 To unmount
+    # umount /dev/vda6
+1. List all partition 
+    # fdisk -l
+2. create partition
+    # fdisk /dev/vda -------------> select the partion---------> first create an extended partition and then create logical partitions in it
+    
+Permanent Mounting:-
+    >> Make entry in /etc/fstab and restart the system
+    # vim /etc/fstab
+        /dev/vda6	/mnt/data	ext4	defaults	0 0   <----------------- make an entry as such
+
+Mounting ----> rw, ro
+    >>>> to make any changes first un-mount the partition
+    # mount  /dev/vda6 /mnt/data/ -o ro ---------> READ-ONLY
+    # mount  /dev/vda6 /mnt/data/ -o rw ---------> READ-WRITE
+    
+FSTAB:-   ----------> Its an on-demand mounting command , but its is useful if we have very less mount point
+AUTOFS:-  ---------->  Its an on-demand mounting command, but it is better than FSTAB asit mounts and automatically umounts the filesystem/partioin in apre defined timeout value
+
+# rpm -qa | grep autofs   --------> To check if the package is installed or not
+# yum install autofs --------> install the autofs package
+        NFS  ====>  # showmount -e server    <-------- to list NFS shared volumes
+                    /Documents *
+                    /Softwares *
+# vim /etc/auto.master
+   >>>>>> under line >>Make an entry<<<<<<<<<<<<
+>>>>>>   /misc   /etc/auto.misc
+         /mnt    /etc/test.share --timeout=120     <----------- creating a MAP_File where i will make entrys for mount point
+                                            \----> value in second, will be unmount if ideal for more than 120 second
+# vim /etc/auto.misc    -----> copy its content and past in 
+                                                           |
+# vim /etc/test.share                                 <----.
+    Softwares -fstypr=auto server:/Softwares
+     |                                    |
+     .---> Mount point in local machime   .-----> NFS server path of the directory
+    Documents -fstypr=auto server:/Documents
+-----------------------------------------------------------------------------------------------    
+
+    
+
+ 
 
    
 
