@@ -11,8 +11,23 @@ Let’s create a username ‘harry’ and assign password.
     Changing password for user harry.
     New password: Retype new password: passwd: all authentication tokens updated successfully.
     [root@linuxtechi ~]#
+    
+**Restricting users with certain for running certain command:-**
+==============>
+The normal user has been given permission to execute some commands which are available in /bin/ and /usr/local/bin/, So to remove those permissions and to restrict the user to run only particular set of commands, following steps shall be useful.
+
+1. Create the restricted shell.
+    # cp /bin/bash /bin/rbash
+2. Modify the target user for the shell as restricted shell
+  While creating user:
+    # useradd -s /bin/rbash localuser
+  For existing user:
+    # usermod -s /bin/rbash localuser
+    
 -----------------------------------------------------------------------------------------------
 PERMISSIONS:-
+======================
+Immutable/Mutable - concept
 
 One more step can be added to restrict the user for making any modifications in their .bash_profile , as users can change it.
 Run the following command to make the user localuser's .bash_profile file as immutable so that root/localuser can't modify it until root removes immutable permission from it.
