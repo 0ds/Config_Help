@@ -176,6 +176,8 @@ Mounting, Permanet Mounting, /etc/fstab, fdisk:-
     # fdisk -l
 2. create partition
     # fdisk /dev/vda -------------> select the partion---------> first create an extended partition and then create logical partitions in it
+Formating:-
+ # mkfs -t ext3 /dev/sda6 
     
 Permanent Mounting:-
     >> Make entry in /etc/fstab and restart the system
