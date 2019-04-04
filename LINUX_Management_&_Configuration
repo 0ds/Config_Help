@@ -184,7 +184,7 @@ Permanent Mounting:-
 
 Mounting ----> rw, ro
     >>>> to make any changes first un-mount the partition
-    # mount  /dev/vda6 /mnt/data/ -o ro ---------> READ-ONLY
+    # mount  /dev/vda6 /mnt/data/ -o ro ---------> READ-ONLY       ---------> -o -> to enter multiple options seperated my comma(,)
     # mount  /dev/vda6 /mnt/data/ -o rw ---------> READ-WRITE
     
 FSTAB:-   ----------> Its an on-demand mounting command , but its is useful if we have very less mount point
@@ -203,10 +203,10 @@ AUTOFS:-  ---------->  Its an on-demand mounting command, but it is better than 
 # vim /etc/auto.misc    -----> copy its content and past in 
                                                            |
 # vim /etc/test.share                                 <----.
-    Softwares -fstypr=auto server:/Softwares
+    Softwares -fstype=auto server:/Softwares
      |                                    |
      .---> Mount point in local machime   .-----> NFS server path of the directory
-    Documents -fstypr=auto server:/Documents
+    Documents -fstype=auto server:/Documents
 -----------------------------------------------------------------------------------------------    
 
     
