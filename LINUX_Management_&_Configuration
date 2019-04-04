@@ -11,6 +11,17 @@ Let’s create a username ‘harry’ and assign password.
     Changing password for user harry.
     New password: Retype new password: passwd: all authentication tokens updated successfully.
     [root@linuxtechi ~]#
+-----------------------------------------------------------------------------------------------
+PERMISSIONS:-
+
+One more step can be added to restrict the user for making any modifications in their .bash_profile , as users can change it.
+Run the following command to make the user localuser's .bash_profile file as immutable so that root/localuser can't modify it until root removes immutable permission from it.
+    # chattr +i /home/localuser/.bash_profile
+
+To remove immutable tag,
+    # chattr -i /home/localuser/.bash_profile
+
+Make file .bash_profile as immutable so that user localuser can't change the environmental paths.
 
 ------------------------------------------------------------------------------------------------
 Redirection:-                                   +                           FileDescripter
@@ -110,6 +121,36 @@ MASKING a service:-
     # systemctl unmask httpd--------------> UNMASK
     
 -------------------------------------------------------------------------------------------------------------
+/etc/   ------------------------------------> hosts.   Allow & Deny
+
+    1. /etc/hosts.allow
+    2. /etc/hosts.deny
+
+syntax>>>>
+            daemon_list : client_list [: command]
+
+A description of each field follows:
+1.    daemon_list: A comma-separated list of daemons, or keyword ALL for all daemons
+2.    client_list: A comma-separated list of clients, or keyword ALL for all clients
+3.    command: An optional command that is executed when a client tries to access a server daemon
+
+1. To allow clients on the 192.168.2 subnet to access FTP (daemon is vsftpd):
+# vi /etc/hosts.allow
+    vsftpd : 192.168.2.*
+
+2. To allow all clients to access ssh, scp, and sftp (daemon is sshd):
+# vi /etc/hosts.allow
+    sshd : ALL
+
+3. Place the following entry in the /etc/hosts.deny file to deny FTP service to all clients except subnet 192.168.2.* (this assumes the previous entry of vsftpd:192.168.2.* exists in /etc/hosts.allow):
+# vi /etc/hosts.deny
+    vsftpd : ALL
+
+4. Use the .domain syntax to represent any hosts from a given domain. The following example allows connections to vsftpd from any host in the example.com domain (if the entry is in /etc/hosts.allow):
+# vi /etc/hosts.allow
+    vsftpd : .example.com
+----------------------------------------------------------------------------------------------------------
+
 
 
    
