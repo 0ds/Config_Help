@@ -230,6 +230,9 @@ ls -------> arranging in terms of accending or decending order in terms of field
 
 # ls -l | sort -kr 9  ----------------> short on basis of field 9
 # ls -l | sort -r -k 9 ----------------> reverse-short  on basis of field 9
+
+>>>>>>>>>>>>>>>>>.. for including multiple fields 
+                            #ls -l | sort -k 3,3 -k 9
 --------------------------------------------------------------------------------------------------
 
 
