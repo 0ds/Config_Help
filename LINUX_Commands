@@ -226,6 +226,22 @@ Here’s what those switches actually mean:
     -f: Allows you to specify the filename of the archive.
 
 ----------------------------------------------------------------------------------------------------
+LS & file
+
+FILE - command
+# file * --------------------------------------------------------> its gies a much more descriptive output
+[vagrant@localhost shell_scripting]$ file *
+a:                setuid regular file, no read permission
+a1:               directory
+b:                setuid empty
+cc:               setuid empty
+file.sh:          setuid regular file, no read permission
+h:                setuid empty
+permissions.facl: setuid regular file, no read permission
+s:                setuid setgid directory
+script.sh:        ASCII text
+
+ls:- command
 ls -------> arranging in terms of accending or decending order in terms of field
 
 # ls -l | sort -kr 9  ----------------> short on basis of field 9
