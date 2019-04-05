@@ -136,6 +136,8 @@ Enabled & Disabled
     # systemctl list-unit-files --type=service
 7. list of all the services which are failed
     # systemctl --failed --type=service
+8. listing all services category-wise
+    # systemctl --property --type=service --all
 
 MASKING a service:-
  means if service is running no one can stop it and if the service is stopped no one can stopped it
