@@ -24,7 +24,7 @@ ALIAS temporay & permanent
 Temporary ---> get removed after restart
 # alias clear='tput clear'
       # alias  -----> to list all alias in albhabetical order 
-      # umalias <command_name> ------->to remove any alias
+      # unalias <command_name> ------->to remove any alias
 Permanent -----> but after edit restart the system
 *****************The /etc/skel/.bashrc file is copied into the home *****************
 #vim $HOME/.bashrc --------> at the end of the file list your alias  ----------> but this alias is local to the user
