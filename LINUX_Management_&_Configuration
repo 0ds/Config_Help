@@ -109,6 +109,10 @@ PROCESS MANAGEMENT
     $ sudo netstat -tulpn | grep httpd
 3. How do I find which process are started by me?:
     # ps -u `whoami`
+4. To try to kill all processes owned by a user username.
+    # pkill -U username
+
+    
     
 
 Reloading & Restarting the services:-
