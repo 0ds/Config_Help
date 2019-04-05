@@ -63,7 +63,7 @@ MORE & LESS
 --------------------------------------------------------------------------------------
 
 KILL & KILLALL
-1 HUP --> hang up
+1 HUP --> hang up  i.e will ask it to reload the configuration file
 3 QUIT --> stoprunning
 9 KILL --> unconditionally terminate
 17 STOP --> stop unconditionally but doesent terminate
