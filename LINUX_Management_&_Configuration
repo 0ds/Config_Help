@@ -98,7 +98,7 @@ Example:-
         33 9 8-14 mar * [`date +\%u` = 0] && sh /scripts/testing.sh  
 2. */5 * * * * -----> every 5 minutes
 3. to monitor cronjob status
-       */5 * * * * sh /scripts/testing.sh 2>&1 /test/cron.log echo "Exit Code" $? >> test/log.log     
+       */5 * * * * sh /scripts/testing.sh 2> /test/cron.log | echo "Exit Code" $? >> test/log.log     
 
 -----------------------------------------------------------------------------------------------------------------------------
 PROCESS MANAGEMENT
