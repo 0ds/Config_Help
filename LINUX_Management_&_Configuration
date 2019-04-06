@@ -110,7 +110,19 @@ KILL & KILLALL
 17 STOP --> stop unconditionally but doesent terminate
 18 TSTP --> stop or pauses, but continue to run in background
 19 COUNT --> resume execution after STOP or TSTP
-       
+
+
+
+    //  Instructs hardware to stop CPU functions.
+    halt
+
+    // power off the system
+    halt -p
+
+    // reboots the system 
+    halt --reboot
+
+
        -s -------------------> this parameter allow you to specify other signal
 # kill -9 <process_id>  ------> to kill only process
 # killall -9 httpd*     ------> to kill entire process tree
