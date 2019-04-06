@@ -6,3 +6,26 @@ Centos
 Service
   # systemctl start sshd.service        ------------------------>CentOS
   # service sshd start                  ------------------------->Debian
+
+=======DOCKER========
+since "systemctl" is very minimally installed on CENTOS_DOCKER_IMAGE so dont use it for SSH purpose
+rather use UBUNTU_IMAGE and since it does not comes with pre installed SSH client use these steps
+1. # apt-get update
+2. # apt-get install ssh -y   --------------> 118MB it will take 
+3. mkdir $HOME/.ssh
+4. touch authorized_keys    <-------------- paste your public key into it
+       OR
+4. ssh-copy-id root@172.17.0.2
+   >> AND PROVIDE root PASSWORD xXXXXX
+
+ON HOST MACHINE
+1. ssh-keygen -t rsa
+   >> hit enter
+   >> hit enter   <------------ dont provide any passphrase
+   >> hit enter                     ||
+2. ssh root@172.17.0.2 -y
+
+
+========ERROR=========
+# ssh -v 172.17.0.2   -----------> to check what error has occoured
+   
