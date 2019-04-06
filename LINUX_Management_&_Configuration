@@ -156,6 +156,10 @@ MASKING a service:-
     # systemctl mask httpd----------------> MASK
     # systemctl unmask httpd--------------> UNMASK
     
+=============TIPS & TRICKS=============
+1. to view cpu percentage
+    # df --output=pcent /dev/sdb4 | awk  'FNR == 2 {print $1}'
+
 -------------------------------------------------------------------------------------------------------------
 /etc/   ------------------------------------> hosts.   Allow & Deny
 
