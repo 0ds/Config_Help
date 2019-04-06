@@ -87,7 +87,7 @@ group::rw-
 other::r--
 
 Here "getfacl x" will get the ACL of the directory named "x" and this output is given to the setfacl command using pipe. 
-       # getfacl x | setfacl -R --set-file =- y
+       # getfacl x | setfacl -R --set-file=- y
 To copy the ACL of the parent directory to its child, use the following command 
        # getfacl . | setfacl -R --set-file=- subdirectory_name
 To back up permissions in the current directory and its subdirectories recursively:
