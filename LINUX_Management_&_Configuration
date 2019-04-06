@@ -103,6 +103,18 @@ Example:-
 -----------------------------------------------------------------------------------------------------------------------------
 PROCESS MANAGEMENT
 
+KILL & KILLALL
+1 HUP --> hang up  i.e will ask it to reload the configuration file
+3 QUIT --> stoprunning
+9 KILL --> unconditionally terminate
+17 STOP --> stop unconditionally but doesent terminate
+18 TSTP --> stop or pauses, but continue to run in background
+19 COUNT --> resume execution after STOP or TSTP
+       
+       -s -------------------> this parameter allow you to specify other signal
+# kill -9 <process_id>  ------> to kill only process
+# killall -9 httpd*     ------> to kill entire process tree
+
 1. Which user is running which program/services
     # ps -up <process_id>
 2. to check which port the service is bind to
