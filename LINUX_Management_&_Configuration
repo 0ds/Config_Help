@@ -234,6 +234,10 @@ AUTOFS:-  ---------->  Its an on-demand mounting command, but it is better than 
      |                                    |
      .---> Mount point in local machime   .-----> NFS server path of the directory
     Documents -fstype=auto server:/Documents
+    
+=========Tips & Tricks========
+1. to view disk usage in percentage
+    # df --output=pcent /dev/sdb4------------> select the device
 -----------------------------------------------------------------------------------------------    
 
     
