@@ -257,5 +257,40 @@ WC - Word Count
      - w --> ||      || words
      -c  --> ||      || charecters
 ----------------------------------------------------------------------     
+tr command - TRANSLATE
+
+       Syntax :
+              $ tr [OPTION] SET1 [SET2]
+Options
+-c : complements the set of characters in string.i.e., operations apply to characters not in the given set
+-d : delete characters in the first set from the output.
+-s : replaces repeated characters listed in the set1 with single occurrence
+-t : truncates set1
+
+1. to view disk usage in numbers
+       # df --output=pcent /dev/sdb4 | tr -dc '0-9'
+       >>>>> 86
+2. How to convert lower case to upper case
+       # cat geekfile | tr “[:lower:]” “[:upper:]”
+3. How to translate white-space to tabs------------------------------> Remove White Splaces
+       $ echo "Welcome To GeeksforGeeks" | tr [:space:] '\t'              #  echo "Welcome To GeeksforGeeks" | tr  -d [:space:] 
+       >>>>>Welcome    To    GeeksforGeeks
+4. How to translate braces into parenthesis
+       # tr '{}' '()'   newfile.txt
+5. How to use squeeze repetition of characters using -s
+       # echo "Welcome    To    GeeksforGeeks" | tr -s [:space:] ' '
+       >>>>>Welcome To GeeksforGeeks
+6. How to delete specified characters using -d option
+       # echo "Welcome To GeeksforGeeks" | tr -d 'w'
+       >>>>>>elcome To GeeksforGeeks
+7. To remove all the digits from the string, use
+       # echo "my ID is 73535" | tr -d [:digit:]
+       >>>>>my ID is
+8. How to complement the sets using -c option
+   You can complement the SET1 using -c option. For example, to remove all characters except digits, you can use the following.
+       # echo "my ID is 73535" | tr -cd [:digit:]   -------------OR----------- # echo “unix” | tr –c “u” “a”
+       >>>>>73535                                                              >>>>>>  Uaaa
+       
+----------------------------------------------------------------------------------------------
    
-   
+
