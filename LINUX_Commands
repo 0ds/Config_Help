@@ -290,7 +290,13 @@ Options
    You can complement the SET1 using -c option. For example, to remove all characters except digits, you can use the following.
        # echo "my ID is 73535" | tr -cd [:digit:]   -------------OR----------- # echo “unix” | tr –c “u” “a”
        >>>>>73535                                                              >>>>>>  Uaaa
-       
+9. TRUNCATE ---------->     -t
+       A. Replace OR some Value spaces with some value
+            [vishalraj@localhost ~]$ echo "i can    see u" | tr -t  ' ' '0'
+                                   >>>>>>>>>>>i0can0000see0u
+            [vishalraj@localhost ~]$ echo "Vishal-Raj" | tr -t  '-' '_'
+                                     >>>>>>>>>> Vishal_Raj
+                                   
 ----------------------------------------------------------------------------------------------
-   
+
 
