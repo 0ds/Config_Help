@@ -93,7 +93,7 @@ To copy the ACL of the parent directory to its child, use the following command
 To back up permissions in the current directory and its subdirectories recursively:
        # getfacl -R . >permissions.facl
 To restore permissions:
-       # setfacl --restore=permissions.facl
+       # setfacl --restore=permissions.facl ------------------> sometimes We have to RUN this Command Twice to take affect.
        
 --------------------------------------------------------------------------------------
 UMASK & CHMOD
