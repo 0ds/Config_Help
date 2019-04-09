@@ -1,3 +1,7 @@
+6 Stages of Linux Boot Process (Startup Sequence)
+   https://www.thegeekstuff.com/2011/02/linux-boot-process
+===============================================================================================   
+
 USERADD, USERMOD, USERDEL PASSWD,CHAGE:-
     useradd command is used to create new accounts in Linux
     usermod command used to modify the existing accounts in linux
