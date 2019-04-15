@@ -298,5 +298,14 @@ Options
                                      >>>>>>>>>> Vishal_Raj
                                    
 ----------------------------------------------------------------------------------------------
+RENAME:-
+ synatx:-
+       rename old_name new_name <file_or_file-location>
+       
+1, to change file extention
+   # rename .html .css .
+2. change filename--> a.txt
+   # rename a.txt b.txt a.txt
+------------------------------------------------------------------------------------   
 
 
