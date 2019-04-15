@@ -306,6 +306,19 @@ RENAME:-
    # rename .html .css .
 2. change filename--> a.txt
    # rename a.txt b.txt a.txt
-------------------------------------------------------------------------------------   
+-----------------------------------------------------------------------------------
+scp command --------> transfer files & folders from one server to another
+ \---> PORT used by this service is '22'
+ 
+ scp 
+       –P port: Specifies the port to connect on the remote host.
+       –r: Recursively copy entire directories.
+       –v: Verbose mode.
+       -l: limited bandwidth usage
+       -i: insert key
 
-
+1. # scp -i key.pem file.txt root@192.168.121.117:/home/vagrant -------------> ***key.pem*** ==>will contain the public key the other server
+2. # scp  -i key.pem -r Python-3.7.3 root@192.168.121.117:/home/vagrant                                OR
+3. # scp -i key.pem -P 5677 Python-3.7.3 root@192.168.121.117:/home/vagrant         ==>if u have pasted your public ip in the authorized_users file which is within $HOME/.ssh/ folder and the key has no passphrase u wont need to use "-i key.pem" option
+4. # scp -l 1000 -r Python-3.7.3 root@192.168.121.117:/home/vagrant 
+-----------------------------------------------------------------------------------------------------------
