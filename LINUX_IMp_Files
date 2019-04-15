@@ -1,1 +1,13 @@
+.bashrc, .bassh_profile:-
+===========================
+
+What is the difference between .bash_profile and .bashrc
+
+Question: To make an alias for the Terminal in OS X, you can either put the aliases in .bash_profile or .bashrc. What is the difference between the two and why would I choose to put aliases in one and not the other?
+Answer: .bash_profile is executed for login shells, while .bashrc is executed for interactive non-login shells.
+         When you login (type username and password) via console, either sitting at the machine, or remotely via ssh: .bash_profile is executed to configure your shell before the initial command prompt.
+         But, if you’ve already logged into your machine and open a new terminal window (xterm) then .bashrc is executed before the window command prompt. .bashrc is also run when you start a new bash instance by typing /bin/bash in a terminal.
+-------------------------------------------------------------------------------------------------
+
+         
 /var/log/secure  ---------------------> stores log of entire user of 1. what commands they run ... everything as such
