@@ -82,15 +82,14 @@ CRON JOBs
 # systemctl status crond.service    ---> to check service status
 
 # crontab -l -----> to list all cron jobs
-# cat /etc/crontab    or   crontab -e    ------> to edit crontab or shedule a job
+# vim /etc/crontab    or   crontab -e    ------> to edit crontab or shedule a job
 
 # crontab -e -u <username>  ----> to edit other user crontab
 # crontab -l -u <username> ------> to list other user crontab
 # crontab -r -u <username> ------> to delete/remove otheruser crontab job
 
 To ALLOW or DENY users to create jobs
-# vim /etc cron.allow ----------------> allow user list
-# vim /etc cron.deny ----------------> deny user list
+# vim /etc/cron.deny ----------------> deny user list
 # find /etc/ -name "cron.*" -print
     cron.d/       cron.daily/   cron.hourly/  cron.monthly/ cron.weekly/  
       |
@@ -134,7 +133,7 @@ KILL & KILLALL
 1. Which user is running which program/services
     # ps -up <process_id>
 2. to check which port the service is bind to
-    $ sudo netstat -tulpn | grep httpd
+    $ sudo netstat -plunt | grep httpd
 3. How do I find which process are started by me?:                  
     # ps -u `whoami`                                        OR                 # pgrep -l -u <user_name>
 4. To try to kill all processes owned by a user username.
@@ -151,7 +150,7 @@ Enabled & Disabled
 1. To check Status
     # systemctl is-active sshd
 2. To check if enabled
-    # system is-enabled ssh
+    # systemctl is-enabled ssh
    a). To enable--------->  # systemctl enable sshd
    b). To disable---------> # systemctl disable sshd
 3. to provide a list  of all the service which are active
