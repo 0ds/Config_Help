@@ -322,3 +322,11 @@ scp command --------> transfer files & folders from one server to another
 3. # scp -i key.pem -P 5677 Python-3.7.3 root@192.168.121.117:/home/vagrant         ==>if u have pasted your public ip in the authorized_users file which is within $HOME/.ssh/ folder and the key has no passphrase u wont need to use "-i key.pem" option
 4. # scp -l 1000 -r Python-3.7.3 root@192.168.121.117:/home/vagrant 
 -----------------------------------------------------------------------------------------------------------
+
+SLEEP ------------------------> Hold session / Wait command
+
+# sleep 120
+         \.....> time in seconds.
+         
+------------------------------------------------------------------------------------------------------------------
+
