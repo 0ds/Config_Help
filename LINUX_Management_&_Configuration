@@ -212,8 +212,9 @@ Mounting, Permanet Mounting, /etc/fstab, fdisk:-
     # mount                                                    # df -h
 0.0 To unmount
     # umount /dev/vda6
-1. List all partition 
-    # fdisk -l
+1. List all partition -------------> to list partitions in aparticular partition
+    # fdisk -l                            # fdisk /dev/vda2 -l
+    
 2. create partition
     # fdisk /dev/vda -------------> select the partion---------> first create an extended partition and then create logical partitions in it
 Formating:-
@@ -255,10 +256,140 @@ AUTOFS:-  ---------->  Its an on-demand mounting command, but it is better than 
     # df --output=pcent /dev/sdb4------------> select the device
 -----------------------------------------------------------------------------------------------    
  
-LVM - LOGICAL VOLUME MANAGEMENT:-
-
+                      ***        LVM - LOGICAL VOLUME MANAGEMENT:-       ***
+                               =====================================
+                               
+ __/\__   URL:-      https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/5/html/logical_volume_manager_administration/lvm_components
+                               
 Install pacage----.   "  lvm2  "
    # yum install lvm2 -y
+
+
+Partitions:-
+-------------
+**Extended Partition is equal to primary partition **
+
+
+Physical Extents and Logical Extents:- ( minimum size chunks )
+--------------------------------------------------------------
+URL:-     https://docstore.mik.ua/manuals/hp-ux/en/5992-4589/ch01s03.html
+
+When you create a volume group, you can specify the size of the physical extent for that group (otherwise it will have a
+default value of 4MB).
+When you make logical volumes, it consists of logical extents, meaning, minimum size chunks, and each logical extent has 
+to match the physical extent of the volume group.
+Basically, you create a volume group, and you say that your physical extent is 2MB. Whenever you create a logical volume 
+from that volume group, the size of that logical volumes has to be an increment of 2. You can specify the size (instead of 
+number of extents), but you cant have it be 5MB. It will automatically round it up (if I recall correctly) to 6MB, because 
+the extent is 2MB. If your physical extent is 8MB, each logical volume created from that volume group can be the size of 
+8,16,24,32MB etc.
+So when they ask you to create a logical volume of 32 logical extents, and the physical extent is 8MB, your logical volume 
+have 32 chunks of 8MB, so 256MB.
+
+                              Physical Extent size   =   Logical Extent size 
+
+
+Types of Logical Volume:-
+-------------------------
+1. linear
+2. mirrored  ------------------> mirroring one volum e to another, Such that any write operation performed on one reflects on another.
+3. Striped
+
+Linear VS Striped:-    ** URL:- https://sysadmincasts.com/episodes/27-lvm-linear-vs-striped-logical-volumes **
+ Linear volumes, writes to the disks in series, as one disk fills up, the next fills, and so on. This is in comparison to 
+ how striped logical volumes work. With striped logical volumes, writes head to the disk in a round-robin fashion, so you 
+ will actually see much better performance because you are using more disks, and not creating hot spots, or saturating
+ one disk in the array.
+1. ###############################     
+     lvdisplay -vm
+    Finding all logical volumes
+  --- Logical volume ---
+  LV Path                /dev/vol_e27/root
+  LV Name                root
+  VG Name                vol_e27
+  LV UUID                cv5i1M-RDTn-00je-VLar-cvhm-7a5o-H06V24
+  LV Write Access        read/write
+  LV Creation host, time ip-10-237-150-222, 2014-06-09 06:41:48 +0000
+  LV Status              available
+  # open                 0
+  LV Size                5.82 TiB
+  Current LE             1526184
+  Segments               1
+  Allocation             inherit
+  Read ahead sectors     auto
+  - currently set to     8192
+  Block device           252:0
+   
+  --- Segments ---
+  Logical extent 0 to 1526183:
+    Type        striped
+    Stripes     8
+    Stripe size     256.00 KiB
+    Stripe 0:
+      Physical volume   /dev/xvdb                         
+      Physical extents  0 to 190772                                     
+    Stripe 1:                                             
+      Physical volume   /dev/xvdc                         
+      Physical extents  0 to 190772                       
+    Stripe 2:                                             
+      Physical volume   /dev/xvdd                         
+      Physical extents  0 to 190772                     
+    Stripe 3:                                             
+      Physical volume   /dev/xvde                       
+      Physical extents  0 to 190772                    
+    Stripe 4:                                           
+      Physical volume   /dev/xvdf                         
+      Physical extents  0 to 190772
+    Stripe 5:
+      Physical volume   /dev/xvdg
+      Physical extents  0 to 190772
+    Stripe 6:
+      Physical volume   /dev/xvdh
+      Physical extents  0 to 190772
+    Stripe 7:
+      Physical volume   /dev/xvdi
+      Physical extents  0 to 190772
+      
+2. #################################      
+      
+bwm-ng -i disk -I xvdb,xvdc,xvdd,xvde,xvdf,xvdg,xvdh,xvdi
+
+  bwm-ng v0.6 (probing every 0.500s), press 'h' for help
+  input: disk IO type: rate
+  |         iface                   Rx                   Tx                Total
+  ==============================================================================
+             xvdb:           0.00 KB/s       279249.51 KB/s       279249.51 KB/s
+             xvdc:           0.00 KB/s       275417.17 KB/s       275417.17 KB/s
+             xvdd:           0.00 KB/s       280782.44 KB/s       280782.44 KB/s
+             xvde:           0.00 KB/s       280135.74 KB/s       280135.74 KB/s
+             xvdf:           0.00 KB/s       279760.49 KB/s       279760.49 KB/s
+             xvdg:           0.00 KB/s       279249.51 KB/s       279249.51 KB/s
+             xvdh:           0.00 KB/s       278994.02 KB/s       278994.02 KB/s
+             xvdi:           0.00 KB/s       278483.04 KB/s       278483.04 KB/s
+  ------------------------------------------------------------------------------
+            total:           0.00 KB/s      2232071.92 KB/s      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
    
 
     
