@@ -321,10 +321,10 @@ Linear VS Striped:-    ** URL:- https://sysadmincasts.com/episodes/27-lvm-linear
   Block device           252:0
    
   --- Segments ---
-  Logical extent 0 to 1526183:
-    Type        striped
-    Stripes     8
-    Stripe size     256.00 KiB
+  Logical extent 0 to 1526183:                                           
+    Type        striped                                               
+    Stripes     8                                                 
+    Stripe size     256.00 KiB                                      
     Stripe 0:
       Physical volume   /dev/xvdb                         
       Physical extents  0 to 190772                                     
@@ -369,16 +369,51 @@ bwm-ng -i disk -I xvdb,xvdc,xvdd,xvde,xvdf,xvdg,xvdh,xvdi
   ------------------------------------------------------------------------------
             total:           0.00 KB/s      2232071.92 KB/s      
 
+Snapshot  vs  Backup:-
+-----------------------
 
+A backup is a consistent VM copy that gives you the possibility to restore it in case the original files are compromised
+by a disaster or a human mistake. Unlike snapshots, backups are independent of the VM, and they can easily be exported
+and stored off premises
 
+BACKUP:- The Storage Networking Industry Association (SNIA) defines a backup in the following way: "A collection of data stored 
+on (usually removable) non-volatile storage media for purposes of recovery in case the original copy of data is lost or
+becomes inaccessible -- also called a backup copy. To be useful for recovery, a backup must be made by copying the source
+data image when it is in a consistent state." The only part of this definition that snapshot-based backups might have 
+trouble with is the "usually removable" part, but this is simply SNIA stating the obvious that some backups are placed on tape.
 
+SNIA's definition does bring up one important aspect of snapshot backups: A snapshot is not really a 
+backup until it has been replicated to another storage system. This is because a snapshot is a virtual copy of the data,
+not an actual copy of the data. If something happens to the volume upon which a snapshot resides, the snapshot of the volume 
+will be of no use -- unless it was copied to another volume via replication.
 
+Backup ----> has a central indexing feature, it resides on another storage device(mostly removable), use for complete backup in case of any disaster.
+Snapshot --> is self indexed and doesn't have such feature, it resides on same storage device(mostly attached), used mostly for fast backups.
 
-
-
-
-
-
+  Assignments:-
+-----------------  
+1. creating Snapshots
+2. Clustered Logical Volume Manager (CLVM)
+3. Growing a File System on a Logical Volume:-
+      1.Make a new physical volume.
+      2.Extend the volume group that contains the logical volume with the file system you are growing to include the new physical volume.
+      3.Extend the logical volume to include the new physical volume.
+      4.Grow the file system
+4. LVM Backups   
+5. All message output passes through a logging module with independent choices of logging levels for:
+    standard output/error                       URL:-
+    syslog                                       >>>  https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/5/html/logical_volume_manager_administration/logging
+    log file
+    external log function 
+   The logging levels are set in the /etc/lvm/lvm.conf file, which is described in ( URL:- https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/5/html/logical_volume_manager_administration/config_file  )
+6. 6.1. Using CLI Commands             >>> URL:-   https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/5/html/logical_volume_manager_administration/lvm_cli#CLI_usage
+   6.2. Physical Volume Administration
+    6.2.1. Creating Physical Volumes
+    6.2.2. Displaying Physical Volumes
+    6.2.3. Preventing Allocation on a Physical Volume
+    6.2.4. Resizing a Physical Volume
+    6.2.5. Removing Physical Volumes
+7.    
 
 
 
