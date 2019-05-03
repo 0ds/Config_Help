@@ -76,6 +76,17 @@ KILL & KILLALL
 --------------------------------------------------------------------------------------
 Access Control List ====>>>> GETFACL & SETFACL
 
+What is ACL ?
+Access control list (ACL) provides an additional, more flexible permission mechanism for file systems. 
+It is designed to assist with UNIX file permissions. ACL allows you to give permissions for any user or
+group to any disc resource.
+Use of ACL :
+Think of a scenario in which a particular user is not a member of group created by you but still you want to give
+some read or write access, how can you do it without making user a member of group, here comes in picture Access
+Control Lists, ACL helps us to do this trick.
+Basically, ACLs are used to make a flexible permission mechanism in Linux.
+
+
 GETFACL  -----> to return file/directories permissions
 
 [system]$ getfacl file.sh 
@@ -87,13 +98,31 @@ group::rw-
 other::r--
 
 Here "getfacl x" will get the ACL of the directory named "x" and this output is given to the setfacl command using pipe. 
-       # getfacl x | setfacl -R --set-file=- y
+       # getfacl x | setfacl -R --set-file=- y              -OR- # getfacl x.txt | setfacl --set-file=- y.txt     <====== For file
 To copy the ACL of the parent directory to its child, use the following command 
        # getfacl . | setfacl -R --set-file=- subdirectory_name
+To copy permissions from one file to another
+       # getfacl --access /dir1/ | setfacl -d -M- /dir2/         
 To back up permissions in the current directory and its subdirectories recursively:
        # getfacl -R . >permissions.facl
 To restore permissions:
        # setfacl --restore=permissions.facl ------------------> sometimes We have to RUN this Command Twice to take affect.
+To remove an acl entry   =============> The -x option of the setfacl command will remove an acl entry from the targeted file    
+       paul@laika:~/test$ getfacl file33 | grep sandra
+       user:sandra:rwx
+       paul@laika:~/test$ setfacl -x sandra file33
+To remove the complete acl ===========> The -b option of the setfacl command will remove the acl from the targeted file.
+       paul@laika:~/test$ setfacl -b file33 
+       paul@laika:~/test$ getfacl file33 
+       # file: file33
+       # owner: paul
+       # group: paul
+       user::rw-
+       group::r--
+       other::r--
+The acl mask ==============> 
+       
+       
        
 --------------------------------------------------------------------------------------
 UMASK & CHMOD
@@ -337,4 +366,10 @@ Syntax:-
 # arp -vn
 # arp -H ether
 --------------------------------------------------------------------------
+
+interview questio:-
+git:-
+1. clome a folder in branch
+jenkins:-
+1. need for paranetrized job
 
