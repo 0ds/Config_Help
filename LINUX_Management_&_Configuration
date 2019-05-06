@@ -394,7 +394,7 @@ so it can be loaded into the RAM and executed.
 
 /etc/fstab :-
 -----------------
- FSTAB entries in details
+FSTAB entries in details:-           URL's:- https://www.howtogeek.com/howto/38125/htg-explains-what-is-the-linux-fstab-and-how-does-it-work/
 
 UUID vs PARTUUID VS PTUUID:-
 ---------------------------
