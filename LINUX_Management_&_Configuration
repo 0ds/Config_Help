@@ -235,7 +235,9 @@ A description of each field follows:
 4. Use the .domain syntax to represent any hosts from a given domain. The following example allows connections to vsftpd from any host in the example.com domain (if the entry is in /etc/hosts.allow):
 # vi /etc/hosts.allow
     vsftpd : .example.com
+==========================================================================================================    
 ----------------------------------------------------------------------------------------------------------
+==========================================================================================================
 
 Mounting, Permanet Mounting, /etc/fstab, fdisk:-
 
@@ -281,6 +283,190 @@ AUTOFS:-  ---------->  Its an on-demand mounting command, but it is better than 
      |                                    |
      .---> Mount point in local machime   .-----> NFS server path of the directory
     Documents -fstype=auto server:/Documents
+
+Partitins, MBR vs GPT:-
+-----------------------
+
+Recommended System Swap Space:-       URL:- https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/installation_guide/s2-diskpartrecommend-x86
+Amount of RAM in the system 	Recommended swap space  	Recommended swap space if allowing for hibernation
+⩽ 2GB                      	2 times the amount of RAM 	3 times the amount of RAM
+> 2GB – 8GB 	               Equal to the amount of RAM 2 times the amount of RAM
+> 8GB – 64GB 	               At least 4 GB            	1.5 times the amount of RAM
+> 64GB 	                     At least 4 GB           	Hibernation not recommended 
+
+Partion Table:-
+---------------
+ Hard-Diisk:-
+   sector --------> ist the smallest blog size on a hdd platter(old hdd use 512 bytes default sector size while modern hdd use 4096 byte, )
+   cylinder ------> combination of multiple sector forms a cylinder
+   head
+   platter --------> A platter is a thin, high-precision aluminum or glass disk that is coated on both sides with a 
+                     high-sensitivity magnetic material and which is used by a HDD to store data. 
+
+	
+
+A partition table is a 64-byte data structure that provides basic information for a computer's operating system about the 
+division of the hard disk drive (HDD) into primary partitions. >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+A data structure is an efficient way of organizing data. A partition is a division of a HDD into logically independent
+sections. Primary partitions are the first four partitions on a HDD.
+The partition table is part of the master boot record (MBR), which is a small program that is executed when a computer 
+boots (i.e., starts up) in order to find the operating system and load it into memory. The MBR also contains other information 
+needed by the BIOS (basic input output system) in order to access the HDD (on which the operating system is usually located).
+The MBR, and thus the partition table, is stored in the boot sector, which is the first physical sector of a HDD. A sector 
+is a segment of a track on a magnetic disk (i.e., a floppy disk or a platter in a HDD).
+A track is any of the concentric circles on the magnetic media on a disk or platter over which one magnetic head (i.e., a 
+device used for reading and writing data on the disk) passes while the head is stationary but the disk is spinning. A platter
+is a thin, high-precision aluminum or glass disk that is coated on both sides with a high-sensitivity magnetic material and
+which is used by a HDD to store data.
+The MBR reads the partition table to determine which partition is the active partition. The active partition is the partition
+that contains the operating system that a computer attempts to load into memory by default when it is booted or rebooted.
+The partition table begins at the hexadecimal (i.e., base 16) position 0x1BE in the boot sector. It contains four entries, 
+each of which is 16 bytes in length, one for each partition.
+The partition table entry for each partition consists of six items: the active flag, with 0x00 for off and 0x80 for on
+(one byte); the starting head, cylinder and sector (three bytes); the filesystem descriptor (one byte); the ending head,
+cylinder and sector (three bytes); the starting sector relative to the disk beginning (four bytes); and the number of sectors i
+n the partition (four bytes).
+A cylinder is any set of all of tracks of equal diameter in a HDD. It can be visualized as a single, imaginary, circle that
+cuts through all of the platters (and both sides of each platter) in the drive. Modern HDDs contain multiple platters, all 
+of which are mounted on a single shaft, in order to maximize the data storage surface in a given volume of space. 
+
+MBR, GPT (GUID Partition Table):-      URL:- https://wiki.manjaro.org/index.php?title=Some_basics_of_MBR_v/s_GPT_and_BIOS_v/s_UEFI
+--------------------------------
+
+What is GPT disk.....? 
+GPT is the abbreviation of GUID Partition Table. The widespread MBR partitioning scheme,was born in the early 1980s for IBM PCs,
+imposed limitations which affected the use of newer hardware. Intel, therefore, developed a new partition-table format in
+the late 1990s as part of what eventually became UEFI. The GPT as of 2010 forms a subset of the UEFI specification.
+
+UEFI (Unified Extensible Firmware Interface) vs BIOS:-
+----------------------------------------------------
+Unified Extensible Firmware Interface (UEFI) is a specification for a software program that connects a computer's firmware 
+to its operating system (OS). UEFI is expected to eventually replace BIOS. Like BIOS, UEFI is installed at the time of 
+manufacturing and is the first program that runs when a computer is turned on.
+
+BIOS uses the Master Boot Record (MBR) to save information about the hard drive data while UEFI uses the GUID partition 
+table (GPT). The major difference between the two is that MBR uses 32-bit entries in its table 
+
+
+MBR vs GPT:-
+----------
+           Max. Number of physical partition
+MBR:--->      MBR uses 32-bit entries in its table which limits the total physical partitons to only 4    
+GPT:--->      unlimited primary partitioned, but for microsoft windows it supports onlt 128 physical partitions
+
+
+Master boot record (MBR) disks use the standard BIOS partition table. GUID partition table (GPT) disks use unified extensible 
+firmware interface (UEFI). One advantage of GPT disks is that you can have more than four partitions on each disk. GPT is also 
+required for disks larger than 2 terabytes.
+>>>>      You can change a disk from MBR to GPT partition style as long as the disk does not contain any partitions or volumes.
+You cannot use the GPT partition style on removable media, or on cluster disks that are connected to shared SCSI or Fibre 
+Channel buses that are used by the Cluster service.
+On an MBR disk, the partitioning and boot data is stored in one place. If this data is overwritten or corrupted, you’re in
+trouble. In contrast, GPT stores multiple copies of this data across the disk, so it’s much more robust and can recover if 
+the data is corrupted.
+
+    MBR( MS-DOS Master Boot Record )                |      GPT( Globally Unique Identifiers Partition Table )
+----------------------------------------------------|-------------------------------------------------------                  
+1. Linux doesnt support MBR rather it users GRUB    | 1. similar is the case here Grub is installed over GPT
+   (GRand Unified Bootloader) installed over MBR    |
+
+
+
+MBR vs GRUB:-
+------------
+MBR consists of three parts, i.e. Boot Loader, Partition Table and Magic Number. Boot loader is a program that loads an 
+operating system when a computer is turned on. Partition table records partition information on local disks. 
+Magic number(0xAA55/0x55AA) marks the device as a valid bootable media. An invalid magic number indicates a corrupted 
+or missing MBR.
+if the master boot record is broken, your computer will fail to boot and show you some of the following errors:
+
+1."Error loading operating system_"
+2."Operating System not found_" or "Operating System missing_"
+3."Invalid partition table_"
+4."Reboot and Select proper Boot device or Insert Boot Media in selected Boot device and press a key_"
+
+Now,
+GRUB (grand unified bootloader) is a bootloader that is frequently installed ON the MBR.
+Operating System kernel images are in most cases residing on appropriate file systems, but the concept of a file system
+is unknown to the BIOS. Thus, in BIOS-based systems, the duty of a boot loader is to access the content of those files,
+so it can be loaded into the RAM and executed.
+
+
+/etc/fstab :-
+-----------------
+ FSTAB entries in details
+
+UUID vs PARTUUID VS PTUUID:-
+---------------------------
+UUID     is a filesystem-level UUID, which is retrieved from the filesystem metadata inside the partition. That can only
+         be read if the filesystem type is known and readable.
+
+PARTUUID is a partition-table-level UUID for the partition, a standard feature for all partitions on GPT-partitioned disks. 
+         Since it is retrieved from the partition table, it is accessible without making no assumptions at all about the actual 
+         contents of the partition. If the partition is encrypted using some unknown encryption method, this might be the only 
+         accessible unique identifier for that particular partition.
+
+PTUUID   is the UUID of the partition table itself, a unique identifier for the entire disk assigned at the time the disk was 
+         partitioned. It's the equivalent of disk signature on MBR-partitioned disks, but with more bits and standardized 
+         procedure for its generation.
+
+On MBR-partitioned disks, there are no real UUIDs in the partition table. So, the 32-bit disk signature is used in place of a 
+PTUUID, and PARTUUIDs are created by adding a dash and a two-digit partition number to the end of the disk signature.
+
+uuidgen - create a new UUID value:-
+----------------------------------
+# uuidgen [-r] [-t]
+   man page URL:-   http://man7.org/linux/man-pages/man1/uuidgen.1.html
+
+1. create uuid (default same as using -r option)
+$ uuidgen
+   b03108db-65f2-4d7c-b884-bb908d111400
+2. create time based uuid
+$ uuidgen -t
+   30799dba-881f-11e6-84ae-024206e5b105
+3.create random uuid
+$ uuidgen -r
+   a68eddcd-6eec-4b5e-846d-97b1161248e2
+
+Example:-
+   uuidgen --sha1 --namespace @dns --name "www.example.com"
+   >>> namespace ------> The namespace may either be a well-known UUID, or else an alias to one of the well-known UUIDs defined 
+                         in RFC 4122, that is @dns, @url, @oid, or @x500. 
+
+blkid --> Block ID
+# blkid -o list                --------->  To List all Block ID's
+
+   /dev/sdb4  ext4             /              c1a0575e-1438-4bde-8fbb-1fc074defd8f
+   /dev/sdb3  swap             [SWAP]         6b144c35-7d2c-4456-b2dd-6ed4c602cfcd
+   /dev/sdb2  ext4             /boot          c5cf58af-1699-4c29-9af0-de53582abb03
+   /dev/sda1  ntfs    Recovery (not mounted)  00FA7333FA732456
+   /dev/sda2  vfat    ESP      (not mounted)  6475-8733
+ 
+[vishalraj@localhost ~]$ ls -l /dev/disk/by-partuuid
+total 0
+lrwxrwxrwx. 1 root root 10 May  6 10:20 121d87b4-d030-4ac2-8555-6d3ee08757f7 -> ../../sda3
+lrwxrwxrwx. 1 root root 10 May  6 10:20 300a9a5b-d7ea-46b9-b89d-d893534d86c7 -> ../../sda6
+lrwxrwxrwx. 1 root root 10 May  6 10:20 3c4d1769-6c4c-4d28-9a59-c99fa9f69544 -> ../../sdb3
+lrwxrwxrwx. 1 root root 10 May  6 10:20 88ffe42e-6060-4db0-99e1-493aed6561f9 -> ../../sdb1
+lrwxrwxrwx. 1 root root 10 May  6 10:20 c8bf17b3-4909-4462-864d-8517684c248f -> ../../sdb4
+lrwxrwxrwx. 1 root root 10 May  6 10:20 d2c5ea7b-d90a-4c57-a51b-75b91c8aa345 -> ../../sda4
+lrwxrwxrwx. 1 root root 10 May  6 10:20 d36126fe-e1f0-4dcc-9bb0-bef4c5ae422c -> ../../sda1
+lrwxrwxrwx. 1 root root 10 May  6 10:20 d372bb74-f693-44e6-b4d6-75ff6ad82417 -> ../../sda5
+lrwxrwxrwx. 1 root root 10 May  6 10:20 d49f07f8-db64-4ddb-8ee5-eea334b0473a -> ../../sdb2
+lrwxrwxrwx. 1 root root 10 May  6 10:20 eb7d7dea-7084-458f-a244-7ac1154e0fa0 -> ../../sda2
+ 
+ 
+$ sudo blkid /dev/sda1
+   /dev/sda1: UUID="727cac18-044b-4504-87f1-a5aefa774bda" TYPE="ext3"   
+
+Table 9.2. Recommended System Swap Space
+Amount of RAM in the system 	Recommended swap space  	Recommended swap space if allowing for hibernation
+⩽ 2GB                      	2 times the amount of RAM 	3 times the amount of RAM
+> 2GB – 8GB 	               Equal to the amount of RAM 2 times the amount of RAM
+> 8GB – 64GB 	               At least 4 GB            	1.5 times the amount of RAM
+> 64GB 	                     At least 4 GB           	Hibernation not recommended 
+   
+
     
 =========Tips & Tricks========
 1. to view disk usage in percentage
