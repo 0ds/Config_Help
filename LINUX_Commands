@@ -56,6 +56,11 @@ $$$$ EXAMPLE's $$$$
 TAIL & HEAD
 # tail -n 5 log_file.txt
 # head -n 4 log_file.txt
+
+To open the last edited file in the current directory use the combination of ls,head and vi commands as shown below
+       # vim `ls -1t | head -1`        ------> Method 1  ---------->     tail -5  (means last five)
+                   \...> (1 means ONE entry per line)
+       # ls -1t | head -1 | xargs vim  ------> Method 2             
 --------------------------------------------------------------------------------------
 MORE & LESS
 #export -p | more
@@ -255,7 +260,7 @@ Here’s what those switches actually mean:
     -f: Allows you to specify the filename of the archive.
 
 ----------------------------------------------------------------------------------------------------
-LS & file
+LS (List) & file
 
 FILE - command
 # file * --------------------------------------------------------> its gies a much more descriptive output
@@ -271,6 +276,8 @@ s:                setuid setgid directory
 script.sh:        ASCII text
 
 ls:- command
+Sorting:-
+---------
 ls -------> arranging in terms of accending or decending order in terms of field
 
 # ls -l | sort -kr 9  ----------------> short on basis of field 9
@@ -278,6 +285,21 @@ ls -------> arranging in terms of accending or decending order in terms of field
 
 >>>>>>>>>>>>>>>>>.. for including multiple fields 
                             #ls -l | sort -k 3,3 -k 9
+ # ls -S ---> from max to min size list                            
+      -rS --> from min to max size list  
+      -R ---> list recursively
+ # ls --sort=time
+       Valid arguments are:
+       - ‘none’
+       - ‘time’
+       - ‘size’
+       - ‘extension’
+       - ‘version’
+# ls -t  ------------> list in order of "Last Modified File"
+To open the last edited file in the current directory use the combination of ls,head and vi commands as shown below
+       # vim `ls -1t | head -1`        ------> Method 1  ---------->     tail -5  (means last five)
+                   \...> (1 means ONE entry per line)
+       # ls -1t | head -1 | xargs vim  ------> Method 2
 --------------------------------------------------------------------------------------------------      
 
 WC - Word Count
@@ -367,9 +389,109 @@ Syntax:-
 # arp -H ether
 --------------------------------------------------------------------------
 
-interview questio:-
-git:-
-1. clome a folder in branch
-jenkins:-
-1. need for paranetrized job
+xargs:-
+It converts input from standard input into arguments to a command. 
+
+Example:
+       $ cd script/ | xargs ls -liasn
+       total 56
+       1196033  4 drwxrwxr-x.  6 1000 1000  4096 May  6 20:11 .
+       1193905  4 drwx------. 23 1000 1000  4096 May  7 11:05 ..
+       1195983  4 drwxrwxr-x.  2 1000 1000  4096 Apr 21 20:02 ansible
+       1196257  4 -rw-rw-r--.  1 1000 1000  2243 May  6 19:36 Assignment.txt
+       1204233  4 drwxrwxr-x.  2 1000 1000  4096 Apr 10 18:52 branches
+       1195863 12 -rw-rw-r--.  1 1000 1000 10609 Apr  3 11:47 linux.txt
+
+-----------------------------------------------------------------------------------------------------------
+
+cut:-
+
+In this, 1- indicate from 1st byte to end byte of a line
+$ cut -b 1- state.txt
+Andhra Pradesh
+Arunachal Pradesh
+
+In this, -3 indicate from 1st byte to 3rd byte of a line
+$ cut -b -3 state.txt
+And
+Aru
+
+print only 2nd charecter
+$ cut -b 2 x.txt
+n
+r
+     OR
+-c (column):-
+Syntax:- $cut -c [(k)-(n)/(k),(n)/(n)] filename
+where - k denotes the starting position of the character and n denotes the ending position of the character in each line
+
+$ cut -c 2,5,7 state.txt
+nr
+rah
+
+$ cut -c 1-7 state.txt
+Andhra
+Arunach
+
+$ cut -c 1- state.txt
+Andhra Pradesh
+Arunachal Pradesh
+
+$ cut -c -5 state.txt
+Andhr
+Aruna
+
+-f (field):-
+delimiter by using -d option.
+Syntax:- $cut -d "delimiter" -f (field number) file.txt
+
+$ cut -f 1 state.txt
+Andhra Pradesh
+Arunachal Pradesh
+
+$ cut -d " " -f 1 state.txt
+Andhra
+Arunachal
+
+$ cut -d " " -f 1-2 state.txt
+Output:
+Andhra Pradesh
+Arunachal Pradesh
+
+ –complement:- As the name suggests it complement the output. This option can be used in the combination 
+               with other options either with -f or with -c.
+$ cut --complement -d " " -f 1 state.txt
+Pradesh
+Pradesh
+
+$ cut --complement -c 5 state.txt
+Andha Pradesh
+Arunchal Pradesh
+----------------------------------------------------------------------------------------------
+
+
+
+https://unix.stackexchange.com/questions/117467/how-to-permanently-set-environmental-variables
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
