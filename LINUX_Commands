@@ -260,6 +260,14 @@ Here’s what those switches actually mean:
     -f: Allows you to specify the filename of the archive.
 
 ----------------------------------------------------------------------------------------------------
+GZ --> GunZip   ,   Gzip
+
+extention ---> .gz
+
+# gunzip splash.xpm.gz      ----> Extract
+# gzip splash.xpm           ----> Compress
+
+-----------------------------------------------------------------------------------------------------
 LS (List) & file
 
 FILE - command
