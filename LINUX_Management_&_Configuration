@@ -386,7 +386,7 @@ if the master boot record is broken, your computer will fail to boot and show yo
 4."Reboot and Select proper Boot device or Insert Boot Media in selected Boot device and press a key_"
 
 Now,
-GRUB (grand unified bootloader) is a bootloader that is frequently installed ON the MBR.
+GRUB (grand unified bootloader) is a bootloader whose address is there in MBR bootloader section.
 Operating System kernel images are in most cases residing on appropriate file systems, but the concept of a file system
 is unknown to the BIOS. Thus, in BIOS-based systems, the duty of a boot loader is to access the content of those files,
 so it can be loaded into the RAM and executed.
@@ -503,13 +503,13 @@ the extent is 2MB. If your physical extent is 8MB, each logical volume created f
 So when they ask you to create a logical volume of 32 logical extents, and the physical extent is 8MB, your logical volume 
 have 32 chunks of 8MB, so 256MB.
 
-                              Physical Extent size   =   Logical Extent size 
+                                Logical Extent size  = multiples of Physical Extent size 
 
 
 Types of Logical Volume:-
 -------------------------
 1. linear
-2. mirrored  ------------------> mirroring one volum e to another, Such that any write operation performed on one reflects on another.
+2. mirrored  ------------------> mirroring one volume to another, Such that any write operation performed on one reflects on another.
 3. Striped
 
 Linear VS Striped:-    ** URL:- https://sysadmincasts.com/episodes/27-lvm-linear-vs-striped-logical-volumes **
