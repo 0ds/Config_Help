@@ -19,6 +19,18 @@ exec ---------> The exec command will execute a command in place of the current 
 # which ------> shows the full path of (shell) commands
        which [options] [--] programname [...]
                 -a >>> print all matching pathnames of each argument
+                
+                Which       vs     Whereis
+                ``````````````````````````                                                                             
+[vagrant@localhost ~]$ whereis cat
+cat: /usr/bin/cat /usr/share/man/man1/cat.1.gz /usr/share/man/man1p/cat.1p.gz
+[vagrant@localhost ~]$ which cat
+/usr/bin/cat
+[vagrant@localhost ~]$ which useradd
+/usr/bin/which: no useradd in (/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/home/vagrant/.local/bin:/home/vagrant/bin)
+[vagrant@localhost ~]$ whereis useradd
+useradd: /usr/sbin/useradd /usr/share/man/man8/useradd.8.gz
+                
 ---------------------------------------------------------------------------                
 ALIAS temporay & permanent
 Temporary ---> get removed after restart
@@ -401,7 +413,7 @@ xargs:-
 It converts input from standard input into arguments to a command. 
 
 Example:
-       $ cd script/ | xargs ls -liasn
+       $ cd dir/ | xargs ls -liasn
        total 56
        1196033  4 drwxrwxr-x.  6 1000 1000  4096 May  6 20:11 .
        1193905  4 drwx------. 23 1000 1000  4096 May  7 11:05 ..
@@ -483,10 +495,36 @@ https://unix.stackexchange.com/questions/117467/how-to-permanently-set-environme
 
 
 
+-----------------------------------------------------------------------------------------------
+DU --> disk usage
+
+arguments:
+              -s --> summarized
+              -h --> in human readable format MB, GB...
+              --apparent-size  --> command line switch makes it measure apparent sizes (what ls shows) rather than actual disk usage.
+
+# ll -lh
+drwxrwxr-x.  3 vagrant vagrant   16 Apr 19 06:25 git_test
+
+[vagrant@localhost ~]$ du --apparent-size -sh git_test/
+16K	git_test/
+[vagrant@localhost ~]$ du -sh git_test/
+56K	git_test/
+[vagrant@localhost ~]$ du --apparent-size -h git_test/
+6	git_test/.git/refs/heads
+6	git_test/.git/refs/tags
+43	git_test/.git/refs
+6	git_test/.git/branches
+15K	git_test/.git/hooks
+261	git_test/.git/info
+6	git_test/.git/objects/pack
+6	git_test/.git/objects/info
+42	git_test/.git/objects
+16K	git_test/.git
+16K	git_test/
 
 
-
-
+--------------------------------------------------------------------------------------------------------
 
 
 
