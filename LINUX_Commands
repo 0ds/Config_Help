@@ -176,7 +176,11 @@ find
        # find /home -iname tecmint.txt   ----->Output:- technimt.txt
                                                         TecHMint.tXt
 Max-Min Depth Search:-
-              # find . -maxdepth 1 -mindepth 1 -type d -printf '%f\n'        >>>>>>>> IMPORTANT <<<<<<<<
+              # find . -maxdepth 1 -mindepth 1 -type d -printf '%f\n'                                >>>>>>>> IMPORTANT <<<<<<<<
+                     -maxdepth 1 and -mindepth 1 make sure, that find really, only looks in the current dir 
+                                                 and doesn't include '.' in the result
+                     -type d looks only for directories
+                     -printf '%f\n prints only the found folder's name (plus a newline) for each hit.              
               
 *Find Directories Using Name
         # find / -type d -name Tecmint
