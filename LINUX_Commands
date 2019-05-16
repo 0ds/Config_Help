@@ -327,6 +327,10 @@ To open the last edited file in the current directory use the combination of ls,
        # vim `ls -1t | head -1`        ------> Method 1  ---------->     tail -5  (means last five)
                    \...> (1 means ONE entry per line)
        # ls -1t | head -1 | xargs vim  ------> Method 2
+
+Q.)How do I make `ls` show file sizes in megabytes?
+>>> Url:-            https://unix.stackexchange.com/questions/64148/how-do-i-make-ls-show-file-sizes-in-megabytes/64150
+       # ls -l --block-size=MB
 --------------------------------------------------------------------------------------------------      
 
 WC - Word Count
