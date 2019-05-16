@@ -175,6 +175,9 @@ find
        # find /home -name tecmint.txt   ----->Output:- techmint.txt
        # find /home -iname tecmint.txt   ----->Output:- technimt.txt
                                                         TecHMint.tXt
+Max-Min Depth Search:-
+              # find . -maxdepth 1 -mindepth 1 -type d -printf '%f\n'        >>>>>>>> IMPORTANT <<<<<<<<
+              
 *Find Directories Using Name
         # find / -type d -name Tecmint
 *Find Files With 777 Permissions
