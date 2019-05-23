@@ -5,3 +5,12 @@ To install any rpm with dependencies  <------------ Use YUM
 To delete rpm package
   $ sudo rpm --erase diffmerge
                 \-->  ( -e  )
+
+Search:-
+========
+rpm -ivh Packages/*xfs*.rpm
+
+RPM repo:-
+=========
+URL:-   https://rpmfind.net/linux/rpm2html/
+                              
