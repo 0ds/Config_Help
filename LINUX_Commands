@@ -180,7 +180,21 @@ Max-Min Depth Search:-
                      -maxdepth 1 and -mindepth 1 make sure, that find really, only looks in the current dir 
                                                  and doesn't include '.' in the result
                      -type d looks only for directories
-                     -printf '%f\n prints only the found folder's name (plus a newline) for each hit.              
+                     -printf '%f\n prints only the found folder's name (plus a newline) for each hit.  
+
+Find and SWAP in file at any depth:-
+              a
+              \
+                b
+                  \
+                    c ---> file.txt
+                    
+          # cat file.txt
+            user1 user2
+            
+# find . -mindepth 3 -type f -name "file" -exec sed -i 's/user1/\n/g;s/user2/user1/g;s/\n/user2/g' {} \;
+
+
               
 *Find Directories Using Name
         # find / -type d -name Tecmint
